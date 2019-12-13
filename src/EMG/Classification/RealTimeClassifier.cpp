@@ -1,13 +1,13 @@
-#include <MEII/Classification/RealTimeClassifier.hpp>
+#include <EMG/Classification/RealTimeClassifier.hpp>
 #include <MEL/Math/Functions.hpp>
-#include <MEII/SignalProcessing/SignalProcessingFunctions.hpp>
-#include <MEII/Classification/LinearDiscriminantAnalysis.hpp>
+#include <EMG/SignalProcessing/SignalProcessingFunctions.hpp>
+#include <EMG/Classification/LinearDiscriminantAnalysis.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Logging/DataLogger.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     RealTimeClassifier::RealTimeClassifier(std::size_t sample_dimension, Time sample_period, Time classification_period, Time feature_period, Time classification_overlap) :
         sample_dim_(sample_dimension),
@@ -342,4 +342,4 @@ namespace meii {
 
 	
 
-} // namespace meii
+} // namespace emg

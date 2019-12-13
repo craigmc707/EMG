@@ -1,10 +1,10 @@
-#include <MEII/Utility/logging_util.hpp>
+#include <EMG/Utility/logging_util.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Core/Console.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
 	MeiiTable::MeiiTable(const std::string &name) :
 		Table(name)
@@ -47,4 +47,4 @@ namespace meii {
 		}
 	}
 
-}
+} // namespace emg

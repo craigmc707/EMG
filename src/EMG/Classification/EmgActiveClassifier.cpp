@@ -1,9 +1,9 @@
-#include <MEII/Classification/EmgActiveClassifier.hpp>
+#include <EMG/Classification/EmgActiveClassifier.hpp>
 #include <MEL/Math/Functions.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     EmgActiveClassifier::EmgActiveClassifier(std::size_t sample_dimension, Time sample_period, Time classification_period, Time feature_period, Time classification_overlap) :
         RealTimeClassifier(sample_dimension, sample_period, classification_period, feature_period, classification_overlap)
@@ -27,4 +27,4 @@ namespace meii {
         return feature_vec;
     }
 
-} // namespace meii
+} // namespace emg

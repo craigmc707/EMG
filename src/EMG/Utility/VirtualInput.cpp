@@ -1,9 +1,9 @@
-#include <MEII/Utility/VirtualInput.hpp>
+#include <EMG/Utility/VirtualInput.hpp>
 
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
 	VirtualInput::VirtualInput(const std::string& name, std::vector<mel::uint32> channel_numbers) :
 		seed_(std::chrono::system_clock::now().time_since_epoch().count()),
@@ -39,4 +39,4 @@ namespace meii {
 	}
 
 
-} // namespace meii
+} // namespace emg

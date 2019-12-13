@@ -1,9 +1,9 @@
-#include <MEII/Classification/EmgActiveEnsClassifier.hpp>
+#include <EMG/Classification/EmgActiveEnsClassifier.hpp>
 #include <algorithm>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     EmgActiveEnsClassifier::EmgActiveEnsClassifier(std::size_t sample_dimension, Time sample_period, std::size_t classifier_count, Time classification_period, Time feature_period, Time classification_overlap) :
         EnsembleRTClassifier(sample_dimension, sample_period, classifier_count, classification_period, feature_period, classification_overlap)
@@ -26,4 +26,4 @@ namespace meii {
             return 0;
     }
 
-}
+} // namespace emg

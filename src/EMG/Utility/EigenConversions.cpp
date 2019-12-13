@@ -1,9 +1,9 @@
-#include <MEII/Utility/EigenConversions.hpp>
+#include <EMG/Utility/EigenConversions.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     void eigvec_to_stdvec(const Eigen::VectorXd& eigen_vec, std::vector<double>& std_vec) {
         std_vec.resize(eigen_vec.size());
@@ -73,4 +73,4 @@ namespace meii {
         return std::sqrt(*lambda_max);
     }
 
-} // namespace meii
+} // namespace emg

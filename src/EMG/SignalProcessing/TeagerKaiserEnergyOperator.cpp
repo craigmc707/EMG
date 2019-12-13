@@ -1,8 +1,8 @@
-#include <MEII/SignalProcessing/TeagerKaiserEnergyOperator.hpp>
+#include <EMG/SignalProcessing/TeagerKaiserEnergyOperator.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     TeagerKaiserEnergyOperator::TeagerKaiserEnergyOperator() :
         Process(),
@@ -22,4 +22,4 @@ namespace meii {
         s_ = std::vector<double>(n_, 0.0);
     }
 
-} // namespace meii
+} // namespace emg

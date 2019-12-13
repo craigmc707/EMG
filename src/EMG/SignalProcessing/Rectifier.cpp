@@ -1,8 +1,8 @@
-#include <MEII/SignalProcessing/Rectifier.hpp>
+#include <EMG/SignalProcessing/Rectifier.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
 	Rectifier::Rectifier(bool full) :
 		full_(full)
@@ -25,4 +25,4 @@ namespace meii {
 
     void Rectifier::reset() {}
 
-} // namespace meii
+} // namespace emg

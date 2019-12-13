@@ -1,9 +1,9 @@
-#include <MEII/EMG/MyoelectricSignal.hpp>
+#include <EMG/EMG/MyoelectricSignal.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     MyoelectricSignal::MyoelectricSignal(AnalogInput::Channel ai_channel, std::size_t buffer_capacity,
         std::size_t hp_filter_order, double hp_filter_cutoff,
@@ -160,4 +160,4 @@ namespace meii {
         tkeo_env_buffer_.push_back(tkeo_envelope_);
     }
 
-} // namespace meii
+} // namespace emg

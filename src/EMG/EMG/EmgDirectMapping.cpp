@@ -1,12 +1,12 @@
-#include <MEII/EMG/EmgDirectMapping.hpp>
+#include <EMG/EMG/EmgDirectMapping.hpp>
 #include <MEL/Logging/Log.hpp>
-#include <MEII/EMG/EmgDataCapture.hpp>
+#include <EMG/EMG/EmgDataCapture.hpp>
 #include <MEL/Math/Functions.hpp>
 #include <MEL/Logging/DataLogger.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
 	EmgDirectMapping::EmgDirectMapping(std::size_t sample_dimension, mel::Time sample_period) :
 		sample_dim_(sample_dimension),
@@ -271,4 +271,4 @@ namespace meii {
 		return true;
 	}
 
-} // namespace meii
+} // namespace emg

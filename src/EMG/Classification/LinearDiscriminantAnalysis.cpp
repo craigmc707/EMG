@@ -1,11 +1,11 @@
-#include <MEII/Classification/LinearDiscriminantAnalysis.hpp>
+#include <EMG/Classification/LinearDiscriminantAnalysis.hpp>
 #include <MEL/Math/Functions.hpp>
-#include <MEII/Utility/EigenConversions.hpp>
+#include <EMG/Utility/EigenConversions.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     double softmax(const std::vector<double>& a, std::size_t k) {
         if (k >= a.size()) {
@@ -254,4 +254,4 @@ namespace meii {
         return true;
     }
 
-} // namespace meii
+} // namespace emg

@@ -1,11 +1,11 @@
-#include <MEII/Regression/RealTimeRegressor.hpp>
+#include <EMG/Regression/RealTimeRegressor.hpp>
 #include <MEL/Math/Functions.hpp>
-#include <MEII/SignalProcessing/SignalProcessingFunctions.hpp>
+#include <EMG/SignalProcessing/SignalProcessingFunctions.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
 	RealTimeRegressor::RealTimeRegressor(std::size_t sample_dimension, std::size_t prediction_dimension, Time sample_period) :
 		sample_dim_(sample_dimension),
@@ -152,4 +152,4 @@ namespace meii {
 		return true;
 	}
 
-} // namespace meii
+} // namespace emg

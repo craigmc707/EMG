@@ -1,9 +1,9 @@
-#include <MEII/EMG/EmgFeatures.hpp>
+#include <EMG/EMG/EmgFeatures.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     double mean_rms(const std::vector<double>& mes_window) {
         double sum_squares = 0.0;
@@ -98,4 +98,4 @@ namespace meii {
         coeffs.assign(++A_k.begin(), A_k.end());
     }
 
-} // namespace meii
+} // namespace emg

@@ -1,10 +1,10 @@
-#include <MEII/EMG/EmgDataCapture.hpp>
+#include <EMG/EMG/EmgDataCapture.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Math/Functions.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     std::vector<double> find_max_window(const std::vector<double>& ref_signal, std::size_t window_size, const std::vector<double>& output_signal) {
         if (ref_signal.empty()) {
@@ -114,4 +114,4 @@ namespace meii {
 		return max;
 	}
 
-} // namespace meii
+} // namespace emg

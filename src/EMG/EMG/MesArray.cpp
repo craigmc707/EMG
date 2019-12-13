@@ -1,10 +1,10 @@
-#include <MEII/EMG/MesArray.hpp>
+#include <EMG/EMG/MesArray.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Math/Functions.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     MesArray::MesArray(std::vector<AnalogInput::Channel> ai_channels, std::size_t buffer_capacity,
         std::size_t hp_filter_order, double hp_filter_cutoff,
@@ -241,4 +241,4 @@ namespace meii {
 		tkeo_envelope_mean_[0] = mel::mean(tkeo_envelope_);
 	}
 
-} // namespace meii
+} // namespace emg

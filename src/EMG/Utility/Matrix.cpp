@@ -1,9 +1,9 @@
-#include <MEII/Utility/Matrix.hpp>
+#include <EMG/Utility/Matrix.hpp>
 #include <MEL/Logging/Log.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     Matrix::Matrix() :
         n_rows_(0),
@@ -243,4 +243,5 @@ namespace meii {
         os << "] " << std::endl;
         return os;
     }
-}
+
+} // namespace emg

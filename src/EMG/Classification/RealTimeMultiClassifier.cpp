@@ -1,14 +1,13 @@
-#include <MEII/Classification/RealTimeMultiClassifier.hpp>
+#include <EMG/Classification/RealTimeMultiClassifier.hpp>
 #include <MEL/Math/Functions.hpp>
-#include <MEII/SignalProcessing/SignalProcessingFunctions.hpp>
-#include <MEII/Classification/LinearDiscriminantAnalysis.hpp>
+#include <EMG/SignalProcessing/SignalProcessingFunctions.hpp>
+#include <EMG/Classification/LinearDiscriminantAnalysis.hpp>
 #include <MEL/Logging/Log.hpp>
-
 #include <MEL/Logging/DataLogger.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 		
     RealTimeMultiClassifier::RealTimeMultiClassifier(std::size_t class_count, std::size_t sample_dimension, Time sample_period, Time classification_period, Time feature_period, Time classification_overlap) :
 		class_count_(class_count < 2 ? 2 : class_count),
@@ -388,4 +387,4 @@ namespace meii {
         return std::distance(votes.begin(), std::max_element(votes.begin(), votes.end()));
     }
 
-} // namespace meii
+} // namespace emg

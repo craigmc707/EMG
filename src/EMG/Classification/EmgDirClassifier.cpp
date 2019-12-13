@@ -1,11 +1,11 @@
-#include <MEII/Classification/EmgDirClassifier.hpp>
-#include <MEII/EMG/EmgFeatures.hpp>
+#include <EMG/Classification/EmgDirClassifier.hpp>
+#include <EMG/EMG/EmgFeatures.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Math/Functions.hpp>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     EmgDirClassifier::EmgDirClassifier(std::size_t class_count, std::size_t sample_dimension, Time sample_period,
         bool RMS, bool MAV, bool WL, bool ZC, bool SSC, bool AR1, bool AR2, bool AR3, bool AR4,
@@ -163,4 +163,4 @@ namespace meii {
         return output;
     }
 
-} // namespace meii
+} // namespace emg

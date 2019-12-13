@@ -1,11 +1,11 @@
-#include <MEII/Classification/EnsembleRTClassifier.hpp>
+#include <EMG/Classification/EnsembleRTClassifier.hpp>
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Logging/DataLogger.hpp>
 #include <numeric>
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     EnsembleRTClassifier::EnsembleRTClassifier(std::size_t sample_dimension, Time sample_period, std::size_t classifier_count, Time classification_period, Time feature_period, Time classification_overlap) :
         classifier_count_(classifier_count),
@@ -202,6 +202,4 @@ namespace meii {
         }
     }
 
-	
-
-} // namespace meii
+} // namespace emg
