@@ -3,19 +3,13 @@ cmake_minimum_required(VERSION 3.13.0)
 #===============================================================================
 # USER OPTIONS
 #===============================================================================
-option(NI_X64      "Turn ON if compiling for NI Intel x64 embeded hardware"                    OFF)
-option(EMG_STATIC "Turn ON to build EMG as a static library (Default is shared)"               ON)
-option(MOVE_BINS   "Turn ON to move binariest to conventional bin/lib folders at compilation"  ON)
-
 option(QUANSER     "Turn ON if compiling for Quanser hardware"                                 ON)
-option(MYO         "Turn ON to build Thalmic Labs Myo Armband."                                OFF)
+option(MYO         "Turn ON to build Thalmic Labs Myo Armband."                                ON)
 option(EXAMPLES    "Turn ON to build example executable(s)."                                   OFF)
 option(TESTS       "Turn ON to build test executable(s)"                                       OFF)
 
-set(NI_X64_ROOT  "C:/dev/nirlt-linux-x64"       CACHE FILEPATH "Absolute path to NI Linux Realtime GNU toolchain (x64).")
-set(QUANSER_ROOT "C:/Program Files/Quanser"     CACHE FILEPATH "Absolute path to Quanser installation.")
 set(EIGEN_ROOT   "C:/dev/eigen"                 CACHE FILEPATH "Absolute path to Eigen installation.")
-set(MYO_ROOT     "C:/dev/myo-sdk-win-0.9.0"     CACHE FILEPATH "Absolute path to Myo SDK.")
+
 
 
 # enable C/C++
@@ -29,143 +23,85 @@ set(CMAKE_CONFIGURATION_TYPES Release)
 # create project
 project(EMG)
 
-find_package(MEL REQUIRED)
-
-# set binary output locations
-if(MOVE_BINS)
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-endif(MOVE_BINS)
-
-
-# add definitons
-add_definitions(-D_CRT_SECURE_NO_WARNINGS -DNOMINMAX -D_WINSOCK_DEPRECATED_NO_WARNINGS)
-
-# set compiler flags
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -O3 -ldl") # all warnings
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W3") # warning level 4
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /MP") # multicore build
+# tell user they can't have shared version of EMG if they try
+if (BUILD_SHARED_LIBS)
+    message(FATAL_ERROR "EMG does not yet support shared libaries")
 endif()
 
-#===============================================================================
-# INCLUDES
-#===============================================================================
+# add ./cmake to CMake module path so our .cmake files can be found
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
 
-# MEL Lib and Eigen Lib
-set(INCLUDE_DIRS include ${EIGEN_ROOT})#{MEL_ROOT}/include ${EIGEN_ROOT})
-if (MYO)
-    list(APPEND INCLUDE_DIRS ${MYO_ROOT}/include)
-endif()
+include(EMGSources)     # lists of EMG source and header files
+include(GNUInstallDirs) # defines conventional GNU isntallation directories
 
-# include directories
-include_directories(${INCLUDE_DIRS})
-
-#===============================================================================
-# FIND PROJECT SOURCE FILES
-#===============================================================================
-
-file(GLOB SRC_EMG
-    "${CMAKE_SOURCE_DIR}/src/EMG/EMG/*.cpp"
-    "${CMAKE_SOURCE_DIR}/include/EMG/EMG/*.hpp"
-)
-
-file(GLOB SRC_SIGNAL_PROCESSING
-    "${CMAKE_SOURCE_DIR}/src/EMG/SignalProcessing/*.cpp"
-    "${CMAKE_SOURCE_DIR}/include/EMG/SignalProcessing/*.hpp"
-)
-
-file(GLOB SRC_CLASSIFICATION
-    "${CMAKE_SOURCE_DIR}/src/EMG/Classification/*.cpp"
-    "${CMAKE_SOURCE_DIR}/include/EMG/Classification/*.hpp"
-)
-
-file(GLOB SRC_REGRESSION
-    "${CMAKE_SOURCE_DIR}/src/EMG/Regression/*.cpp"
-    "${CMAKE_SOURCE_DIR}/include/EMG/Regression/*.hpp"
-)
-
-file(GLOB SRC_UTILITY
-    "${CMAKE_SOURCE_DIR}/src/EMG/Utility/*.cpp"
-    "${CMAKE_SOURCE_DIR}/include/EMG/Utility/*.hpp"
-)
-
-# EMG library source files
-set(EMG_SOURCE_FILES
-    # ${SRC_EMG}
-    ${SRC_SIGNAL_PROCESSING}
-    # ${SRC_CLASSIFICATION}
-    # ${SRC_REGRESSION}
-    ${SRC_UNITY}
-    ${SRC_UTILITY}
-)
-
-# create filters for Visual Studio
-source_group("Control" FILES ${SRC_CONTROL})
-source_group("EMG" FILES ${SRC_EMG})
-source_group("SignalProcessing" FILES ${SRC_SIGNAL_PROCESSING})
-source_group("Classification" FILES ${SRC_CLASSIFICATION})
-source_group("Regression" FILES ${SRC_REGRESSION})
-source_group("Utility" FILES ${SRC_UTILITY})
+# Enable IDE folders and set them for predefined CMake projects
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake")
 
 #===============================================================================
 # CREATE EMG LIBRARY
 #===============================================================================
 
-# add_library(EMG STATIC ${EMG_SOURCE_FILES})
-if (EMG_STATIC)
-    add_definitions(-DEMG_STATIC)
-endif()
+# create EMG library (EMG::EMG)
+add_library(EMG STATIC "")
+target_compile_definitions(EMG PUBLIC)
+
+# add alias so that find_package(EMG) and add_subdirectory(EMG) provide the same targets and namespaces
+add_library(EMG::EMG ALIAS EMG)
+
+# add sources
+target_sources(EMG PRIVATE ${EMG_COMMON_SRC})
+
+# add <project>/include as public include directory
+target_include_directories(EMG
+    PUBLIC
+        $<INSTALL_INTERFACE:include>
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/src                
+)
+
+# add compile features
+# complete listing:
+# https://cmake.org/cmake/help/v3.14/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html
+target_compile_features(EMG
+    PUBLIC
+        cxx_std_11
+    PRIVATE
+)
+
+if(WIN32)
+    target_compile_definitions(EMG
+        PUBLIC
+            -D_CRT_SECURE_NO_WARNINGS          # remove secure warnings (e.g sprinft_s)
+            -DNOMINMAX                         # remove min/max macros
+            -D_WINSOCK_DEPRECATED_NO_WARNINGS  # remove winsock deprecated warnings
+    )
+
+    # the following only compile under MSVC
+    if(MSVC)
+        if (MYO)
+            target_link_libraries(EMG MEL::myo)
+        endif()
+        if (QUANSER)
+            target_link_libraries(EMG MEL::quanser)
+        endif()
+    endif(MSVC)
+endif(WIN32)
+
 
 #===============================================================================
 # LINK EXTERNAL LIBS
 #===============================================================================
 
-set(LINK_LIBS "")
-if(QUANSER)
-    if (CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit
-        link_directories("${QUANSER_ROOT}/QUARC/lib/win64")
-    else() # 32-bit
-        link_directories("${QUANSER_ROOT}/QUARC/lib/windows")
-    endif()
-endif(QUANSER)
 
-# list(APPEND LINK_LIBS MEL::Quanser)
+find_package(MEL REQUIRED)
 
-if(win32)
-    list(APPEND LINK_LIBS
-    ws2_32
-    winmm
-    Pdh
-    Psapi
-    hil
-    quanser_communications
-    quanser_runtime
-    quanser_common
-    bufferoverflowU
-    legacy_stdio_definitions)
-endif()
+# Eigen Lib
+set(INCLUDE_DIRS include ${EIGEN_ROOT})
 
-
-if (MYO)
-    link_directories("${MYO_ROOT}/lib")
-    if (CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit
-        list(APPEND LINK_LIBS myo64)
-    else() # 32-bit
-        list(APPEND LINK_LIBS myo32)
-    endif()
-endif()
-
-if (EMG_STATIC)
-    add_library(EMG STATIC ${EMG_SOURCE_FILES})
-else()
-    add_library(EMG SHARED ${EMG_SOURCE_FILES})
-endif()
-
-target_link_libraries(EMG MEL::quanser)#${LINK_LIBS})
-target_compile_definitions(EMG PRIVATE -DEMG_EXPORTS)
+# include directories
+include_directories(${INCLUDE_DIRS})
 
 
 
@@ -173,17 +109,3 @@ target_compile_definitions(EMG PRIVATE -DEMG_EXPORTS)
 # CREATE EXECUTABLES
 #===============================================================================
 
-
-if (MYO)
-    add_executable(myo_armband_ml src/myo_armband_ml.cpp)
-    target_link_libraries(myo_armband_ml EMG)
-endif()
-
-if(EXAMPLES)
-    add_subdirectory(examples)
-endif()
-
-if(TESTS)
-    add_executable(testing tests/testing.cpp)
-    target_link_libraries(testing EMG)
-endif()
