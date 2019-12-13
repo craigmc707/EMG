@@ -15,13 +15,12 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EIGEN_CONVERSIONS_HPP
-#define MEII_EIGEN_CONVERSIONS_HPP
+pragma once
 
 #include <Eigen/Dense>
 #include <Eigen/StdVector>
 
-namespace meii {
+namespace emg {
 
     void eigvec_to_stdvec(const Eigen::VectorXd& eigen_vec, std::vector<double>& std_vec);
 
@@ -37,6 +36,4 @@ namespace meii {
 
     double mat_spectral_norm(const Eigen::MatrixXd& mat);
 
-} // namespace meii
-
-#endif // MEII_EIGEN_CONVERSIONS_HPP
+} // namespace emg

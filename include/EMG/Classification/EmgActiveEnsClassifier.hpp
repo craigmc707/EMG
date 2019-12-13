@@ -15,16 +15,15 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EMG_ACTIVE_ENS_CLASSIFIER_HPP
-#define MEII_EMG_ACTIVE_ENS_CLASSIFIER_HPP
+pragma once
 
-#include <MEII/Classification/EmgActiveClassifier.hpp>
-#include <MEII/Classification/EnsembleRTClassifier.hpp>
+#include <EMG/Classification/EmgActiveClassifier.hpp>
+#include <EMG/Classification/EnsembleRTClassifier.hpp>
 #include <MEL/Core/Time.hpp>
 #include <vector>
 #include <limits>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -51,6 +50,4 @@ namespace meii {
         std::vector<EmgActiveClassifier> emg_active_classifiers_; ///< vector of binary classifiers feeding into ensemble classifier
     };
 
-} // namespace meii
-
-#endif // MEII_EMG_ACTIVE_ENS_CLASSIFIER_HPP
+} // namespace emg

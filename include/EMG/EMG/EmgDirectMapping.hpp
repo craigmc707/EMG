@@ -15,16 +15,15 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EMG_DIRECT_MAPPING_HPP
-#define MEII_EMG_DIRECT_MAPPING_HPP
+pragma once
 
-#include <MEII/Regression/RealTimeRegressor.hpp>
+#include <EMG/Regression/RealTimeRegressor.hpp>
 #include <MEL/Core/Time.hpp>
 #include <MEL/Logging/Table.hpp>
 #include <vector>
 #include <map>
 
-namespace meii {
+namespace emg {
 
 	class EmgDirectMapping {
 	public:
@@ -104,6 +103,4 @@ namespace meii {
 
 	};
 
-} // namespace meii
-
-#endif // MEII_EMG_DIRECT_MAPPING_HPP
+} // namespace emg

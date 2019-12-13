@@ -15,14 +15,13 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_LOGGING_UTIL_HPP
-#define MEII_LOGGING_UTIL_HPP
+pragma once
 
 #include <MEL/Logging/Table.hpp>
 #include <MEL/Core/Types.hpp>
 #include <vector>
 
-namespace meii {
+namespace emg {
 
 	class MeiiTable : public mel::Table {
 	public:
@@ -62,9 +61,6 @@ namespace meii {
 		std::vector<std::string> passive_coordinates_str = { "WristSlider1R", "WristSlider2R", "WristSlider3R", "WristRingX", "WristRingY", "WristRingZ", "WristRingAlpha", "WristRingBeta", "WristRingGamma" };
 		std::vector<std::string> locked_coordinates_str = { "BaseBlockT", "ShoulderAA", "HandleT" };
 
-	};
-    
+	}; 
 
-}
-
-#endif // MEII_LOGGING_UTIL_HPP
+} // namespace emg

@@ -15,12 +15,11 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EMG_DATA_CAPTURE_HPP
-#define MEII_EMG_DATA_CAPTURE_HPP
+pragma once
 
 #include <vector>
 
-namespace meii {
+namespace emg {
 
     /// Return a window of output_signal (or ref_signal if output_signal is empty) of size window_size that is centered on the maximum value of ref_signal
     extern std::vector<double> find_max_window(const std::vector<double>& ref_signal, std::size_t window_size = 1, const std::vector<double>& output_signal = std::vector<double>());
@@ -30,6 +29,4 @@ namespace meii {
 
 	extern std::vector<double> max_sample_per_channel(const std::vector<std::vector<double>> signal);
 
-} // namespace meii
-
-#endif // MEII_EMG_DATA_CAPTURE_HPP
+} // namespace emg

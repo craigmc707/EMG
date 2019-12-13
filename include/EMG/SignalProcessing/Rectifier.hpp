@@ -15,14 +15,13 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_RECTIFIER_HPP
-#define MEII_RECTIFIER_HPP
+pramga once
 
 #include <MEL/Math/Process.hpp>
 #include <MEL/Math/Functions.hpp>
 #include <vector>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -47,6 +46,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_RECTIFIER_HPP
+} // namespace emg

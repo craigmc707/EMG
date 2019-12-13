@@ -15,12 +15,11 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EMG_FEATURES_HPP
-#define MEII_EMG_FEATURES_HPP
+pragma once
 
 #include <vector>
 
-namespace meii {
+namespace emg {
 
     double mean_rms(const std::vector<double>& mes_window);
 
@@ -34,6 +33,4 @@ namespace meii {
 
     void auto_regressive_coefficients(std::vector<double>& coeffs, const std::vector<double>& mes_window);
 
-} // namespace meii
-
-#endif // MEII_EMG_FEATURES_HPP
+} // namespace emg

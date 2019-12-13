@@ -15,14 +15,13 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_SIGNALPROCESSOR_HPP
-#define MEII_SIGNALPROCESSOR_HPP
+pragma once
 
 #include <MEL/Math/Process.hpp>
 #include <vector>
 #include <MEL/Utility/Console.hpp>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -102,6 +101,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_SIGNALPROCESSOR_HPP
+} // namespace emg

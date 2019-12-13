@@ -15,13 +15,12 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_MATRIX_HPP
-#define MEII_MATRIX_HPP
+pragma once
 
 #include <vector>
 #include <ostream>
 
-namespace meii {
+namespace emg {
 
     class Matrix {
 
@@ -127,7 +126,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-
-#endif // !MEII_MATRIX_HPP
+} // namespace emg

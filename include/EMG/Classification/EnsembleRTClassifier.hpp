@@ -15,16 +15,15 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_ENSEMBLE_RT_CLASSIFIER_HPP
-#define MEII_ENSEMBLE_RT_CLASSIFIER_HPP
+pragma once
 
-#include <MEII/Classification/RealTimeClassifier.hpp>
+#include <EMG/Classification/RealTimeClassifier.hpp>
 #include <MEL/Core/Time.hpp>
 #include <MEL/Utility/RingBuffer.hpp>
 #include <vector>
 #include <limits>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -110,6 +109,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_ENSEMBLE_RT_CLASSIFIER_HPP
+} // namespace emg

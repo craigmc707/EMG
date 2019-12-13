@@ -15,8 +15,7 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_SIGNAL_PROCESSING_FUNCTIONS_HPP
-#define MEII_SIGNAL_PROCESSING_FUNCTIONS_HPP
+pragma once
 
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Core/Types.hpp>
@@ -24,7 +23,7 @@
 
 using namespace mel;
 
-namespace meii {
+namespace emg {
 
     template <typename T>
     extern std::vector<T> downsample(const std::vector<T>& signal, std::size_t ds_factor) {
@@ -62,6 +61,4 @@ namespace meii {
         return signal_bins;
     }
 
-} // namespace meii
-
-#endif // MEII_SIGNAL_PROCESSING_FUNCTIONS_HPP
+} // namespace emg

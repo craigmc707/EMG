@@ -15,13 +15,12 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_MES_ARRAY_HPP
-#define MEII_MES_ARRAY_HPP
+pragma once
 
-#include <MEII/EMG/MyoelectricSignal.hpp>
+#include <EMG/EMG/MyoelectricSignal.hpp>
 #include <MEL/Daq/Input.hpp>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -138,6 +137,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_MES_ARRAY_HPP
+} // namespace emg

@@ -15,18 +15,17 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_MYOELECTRIC_SIGNAL_HPP
-#define MEII_MYOELECTRIC_SIGNAL_HPP
+pragma once
 
 #include <MEL/Core/Device.hpp>
 #include <MEL/Daq/Input.hpp>
 #include <MEL/Math/Butterworth.hpp>
-#include <MEII/SignalProcessing/Rectifier.hpp>
-#include <MEII/SignalProcessing/TeagerKaiserEnergyOperator.hpp>
+#include <EMG/SignalProcessing/Rectifier.hpp>
+#include <EMG/SignalProcessing/TeagerKaiserEnergyOperator.hpp>
 #include <MEL/Utility/RingBuffer.hpp>
 #include <vector>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -128,6 +127,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_MYOELECTRIC_SIGNAL_HPP
+} // namespace emg

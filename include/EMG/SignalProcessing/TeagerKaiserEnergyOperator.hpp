@@ -15,13 +15,12 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEii_TEAGER_KAISER_ENERGY_OPERATOR_HPP
-#define MEii_TEAGER_KAISER_ENERGY_OPERATOR_HPP
+pragma once
 
 #include <MEL/Math/Process.hpp>
 #include <vector>
 
-namespace meii {
+namespace emg {
 
     //==============================================================================
     // CLASS DECLARATION
@@ -48,7 +47,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-
-#endif // MEii_TEAGER_KAISER_ENERGY_OPERATOR_HPP
+} // namespace emg

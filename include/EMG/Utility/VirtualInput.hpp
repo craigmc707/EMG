@@ -15,15 +15,14 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_VIRTUAL_INPUT_HPP
-#define MEII_VIRTUAL_INPUT_HPP
+pragma once
 
 #include <MEL/Daq/Input.hpp>
 #include <MEL/Utility/RingBuffer.hpp>
 #include <chrono>
 #include <random>
 
-namespace meii {
+namespace emg {
 
 	class VirtualInput : public mel::Input<mel::Voltage> {
 
@@ -46,6 +45,4 @@ namespace meii {
 
 	};
 
-} // namespace meii
-
-#endif  // MEII_VIRTUAL_INPUT_HPP
+} // namespace emg

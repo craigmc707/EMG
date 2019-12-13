@@ -15,14 +15,13 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_REAL_TIME_REGRESSOR_HPP
-#define MEII_REAL_TIME_REGRESSOR_HPP
+pragma once
 
 #include <MEL/Core/Time.hpp>
 #include <MEL/Logging/Table.hpp>
 #include <vector>
 
-namespace meii {
+namespace emg {
 
 	//==============================================================================
 	// CLASS DECLARATION
@@ -82,6 +81,4 @@ namespace meii {
 
 	};
 
-} // namespace meii
-
-#endif // MEII_REAL_TIME_REGRESSOR_HPP
+} // namespace emg

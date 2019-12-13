@@ -15,14 +15,13 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_LINEAR_DISCRIMINANT_ANALYSIS_HPP
-#define MEII_LINEAR_DISCRIMINANT_ANALYSIS_HPP
+pragma once
 
 #include <vector>
 #include <algorithm>
 #include <Eigen/Dense>
 
-namespace meii {
+namespace emg {
 
     double softmax(const std::vector<double>& a, std::size_t k);
 
@@ -30,6 +29,4 @@ namespace meii {
 
     bool multi_linear_discriminant_model(const std::vector<std::vector<std::vector<double>>>& all_class_data, std::vector<std::vector<double>>& w, std::vector<double>& w_0, double r_min = 0.1);
 
-} // namespace meii
-
-#endif // MEII_LINEAR_DISCRIMINANT_ANALYSIS_HPP
+} // namespace emg

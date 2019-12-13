@@ -15,15 +15,14 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-#ifndef MEII_EMG_DIR_CLASSIFIER_HPP
-#define MEII_EMG_DIR_CLASSIFIER_HPP
+pragma once
 
-#include <MEII/Classification/RealTimeMultiClassifier.hpp>
+#include <EMG/Classification/RealTimeMultiClassifier.hpp>
 #include <MEL/Core/Time.hpp>
 #include <vector>
 #include <limits>
 
-namespace meii {
+namespace emg {
     //==============================================================================
     // CLASS DECLARATION
     //==============================================================================
@@ -62,6 +61,4 @@ namespace meii {
 
     };
 
-} // namespace meii
-
-#endif // MEII_EMG_DIR_CLASSIFIER_HPP
+} // namespace emg
