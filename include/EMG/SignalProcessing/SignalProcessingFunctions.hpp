@@ -15,7 +15,7 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-pragma once
+#pragma once
 
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Core/Types.hpp>

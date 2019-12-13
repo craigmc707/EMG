@@ -15,7 +15,7 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-pragma once
+#pragma once
 
 #include <MEL/Core/Device.hpp>
 #include <MEL/Daq/Input.hpp>

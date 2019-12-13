@@ -15,7 +15,7 @@
 //
 // Author(s): Craig McDonald (craig.g.mcdonald@gmail.com)
 
-pramga once
+#pragma once
 
 #include <MEL/Math/Process.hpp>
 #include <MEL/Math/Functions.hpp>
